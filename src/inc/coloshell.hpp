@@ -329,7 +329,7 @@ static void coloshell(const T t, const Colors colo)
     std::cout << "0x" << std::setw(sizeof(va)) << std::right << std::setfill('0');                                  \
     std::cout << std::hex << va;                                                                                    \
     std::cout << ": ";                                                                                              \
-    std::cout << (gadget)->get_disassembly() << " (" << std::dec << (gadget)->get_nb() << " found)" << std::endl;   \
+    std::cout << (gadget)->get_disassembly() << std::endl;   \
 }
 
 /**

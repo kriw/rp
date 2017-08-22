@@ -60,8 +60,6 @@ CPU::E_CPU PE::extract_information_from_binary(std::ifstream &file)
     RP_IMAGE_NT_HEADERS32 imgNtHeaders32 = {0};
     CPU::E_CPU cpu = CPU::CPU_UNKNOWN;
 
-    std::cout << "Loading PE information.." << std::endl;
-
     /* Remember where the caller was in the file */
     std::streampos off = file.tellg();
 

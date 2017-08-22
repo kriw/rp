@@ -34,8 +34,6 @@ CPU* Macho::get_cpu(std::ifstream &file)
     CPU *cpu(NULL);
     RP_MACH_HEADER<x86Version> header32;
 
-    std::cout << "Loading Mach-O information.." << std::endl;
-
     /* Remember where the caller was in the file */
     std::streampos off = file.tellg();
 

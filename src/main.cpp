@@ -116,12 +116,10 @@ int main(int argc, char* argv[])
                 if(att->count > 0)
                 {
                     disass_engine_display_option += ATSyntax;
-                    std::cout << "Using the AT&T syntax.." << std::endl;
                 }
                 else
                 {
                     disass_engine_display_option += NasmSyntax;
-                    std::cout << "Using the Nasm syntax.." << std::endl;
                 }
 
                 if(rop->ival[0] < 0)
@@ -130,9 +128,7 @@ int main(int argc, char* argv[])
                 if(rop->ival[0] > MAXIMUM_INSTRUCTION_PER_GADGET)
                     RAISE_EXCEPTION("You specified a maximum number of instruction too important for the --rop option");
 
-                std::cout << std::endl << "Wait a few seconds, rp++ is looking for gadgets.." << std::endl;
                 std::multiset<Gadget*, Gadget::Sort> all_gadgets = p.find_gadgets(rop->ival[0], disass_engine_display_option);
-                std::cout << "A total of " << all_gadgets.size() << " gadgets found." << std::endl;
                 if(unique->count > 0)
                 {
                     std::map<std::string, Gadget*> unique_gadgets = only_unique_gadgets(all_gadgets);

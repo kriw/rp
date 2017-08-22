@@ -50,7 +50,6 @@ CPU::E_CPU Elf::extract_information_from_binary(std::ifstream &file)
 {
     unsigned char buf[EI_NIDENT] = {0};
     CPU::E_CPU cpu = CPU::CPU_UNKNOWN;
-    std::cout << "Loading ELF information.." << std::endl;
 
     /* Remember where the caller was in the file */
     std::streampos off = file.tellg();

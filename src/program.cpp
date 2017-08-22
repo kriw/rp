@@ -37,7 +37,6 @@ Program::Program(const std::string & program_path, CPU::E_CPU arch)
 {
     unsigned int magic_dword = 0;
 
-    std::cout << "Trying to open '" << program_path << "'.." << std::endl;
     m_file.open(program_path.c_str(), std::ios::binary);
     if(m_file.is_open() == false)
         RAISE_EXCEPTION("Cannot open the file");
@@ -81,8 +80,6 @@ Program::Program(const std::string & program_path, CPU::E_CPU arch)
             RAISE_EXCEPTION("get_cpu fails");
     }
 
-
-    std::cout << "FileFormat: " << m_exformat->get_class_name() << ", Arch: " << m_cpu->get_class_name() << std::endl;
 }
 
 Program::~Program(void)
@@ -114,7 +111,6 @@ std::multiset<Gadget*, Gadget::Sort> Program::find_gadgets(unsigned int depth, u
     /* Walk the executable sections */
     for(std::vector<Section*>::iterator it_sec = executable_sections.begin(); it_sec != executable_sections.end(); ++it_sec)
     {
-        std::cout << "in " << (*it_sec)->get_name() << std::endl;
         unsigned long long va_section = (*it_sec)->get_vaddr();
 
         /* Let the cpu research */
@@ -126,7 +122,6 @@ std::multiset<Gadget*, Gadget::Sort> Program::find_gadgets(unsigned int depth, u
             engine_display_option
         );
 
-        std::cout << gadgets.size() << " found." << std::endl << std::endl;
 
         /* 
             XXX: 
