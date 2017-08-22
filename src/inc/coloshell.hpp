@@ -140,9 +140,9 @@ static inline void disable_color(void)
 template<class T>
 static void coloshell(const T t, const Colors colo)
 {
-    enable_color(colo);
+    //enable_color(colo);
     std::cout << t;
-    disable_color();
+    //disable_color();
 }
 
 /**
@@ -217,10 +217,8 @@ static void coloshell(const T t, const Colors colo)
  */
 #define display_hex_field(field, n) {                                                         \
     std::cout << std::setw(n) << std::left << std::setfill(' ') << " "#field << ": ";         \
-    enable_color(COLO_RED);                                                                   \
     std::cout << "0x" << std::setw(sizeof(field) * 2) << std::right << std::setfill('0');     \
     std::cout << std::hex << field;                                                           \
-    disable_color();                                                                          \
 }
 
 /**
@@ -328,14 +326,10 @@ static void coloshell(const T t, const Colors colo)
  * \param gadget: It is the gadget you want to output
  */
 #define display_gadget_lf(va, gadget) {                                                                             \
-    enable_color(COLO_RED);                                                                                         \
     std::cout << "0x" << std::setw(sizeof(va)) << std::right << std::setfill('0');                                  \
     std::cout << std::hex << va;                                                                                    \
-    disable_color();                                                                                                \
     std::cout << ": ";                                                                                              \
-    enable_color(COLO_GREEN);                                                                                       \
     std::cout << (gadget)->get_disassembly() << " (" << std::dec << (gadget)->get_nb() << " found)" << std::endl;   \
-    disable_color();                                                                                                \
 }
 
 /**
@@ -347,12 +341,9 @@ static void coloshell(const T t, const Colors colo)
  * \param size: It is the size of the hex values
  */
 #define display_offset_lf(va, hex_val, size) {                                                            \
-    enable_color(COLO_RED);                                                                               \
     std::cout << "0x" << std::setw(sizeof(va)) << std::right << std::setfill('0');                        \
     std::cout << std::hex << va;                                                                          \
-    disable_color();                                                                                      \
     std::cout << ": ";                                                                                    \
-    enable_color(COLO_GREEN);                                                                             \
     for(unsigned int i = 0; i < size; ++i)                                                                \
     {                                                                                                     \
         if(isprint(hex_val[i]))                                                                           \
@@ -364,7 +355,6 @@ static void coloshell(const T t, const Colors colo)
         }                                                                                                 \
     }                                                                                                     \
     std::cout << std::endl;                                                                               \
-    disable_color();                                                                                      \
 }
 
 #endif
